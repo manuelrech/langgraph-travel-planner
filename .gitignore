@@ -1,0 +1,6 @@
+.tp
+__pycache__
+*pyc
+.env
+dump.rdb
+.vscode
