@@ -43,12 +43,12 @@ def search_hotels(
     def format_response(hotel_offers):
         formatted_response = []
         for hotel in hotel_offers:
-            hotel_offer = {'hotel_name': hotel['hotel']['name'], 'offers': []}
-            for offer in hotel['offers']:
+            hotel_offer = {'hotel_name': hotel.get('hotel', {}).get('name', 'unknown'), 'offers': []}
+            for offer in hotel.get('offers', []):
                 hotel_offer['offers'].append({
-                    "room": offer['room'],
-                    "price": offer['price']['total'],
-                    "policies": offer['policies']
+                    "room": offer.get('room', 'unknown'),
+                    "price": offer.get('price', {}).get('total', 'unknown'),
+                    "policies": offer.get('policies', [])
                 })
             formatted_response.append(hotel_offer)
         return formatted_response

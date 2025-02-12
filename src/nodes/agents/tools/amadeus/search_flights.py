@@ -40,21 +40,21 @@ def search_flights(
     def format_response(flights):
         flight_infos = []
         for flight in flights:
-            itinerary = flight['itineraries'][0]
-            num_changes = len(itinerary['segments']) - 1
+            itinerary = flight.get('itineraries', [{}])[0]
+            num_changes = len(itinerary.get('segments', [])) - 1
             segments = []
-            for segment in itinerary['segments']:
+            for segment in itinerary.get('segments', []):
                 segments.append({
                     'departure': segment['departure']['iataCode'],
                     'arrival': segment['arrival']['iataCode'],
                     'at': segment['departure']['at']
                 })
-            price = float(flight['price']['total'])
+            price = float(flight.get('price', {}).get('total', 'unknown'))
             flight_infos.append({
                 'number_of_changes': num_changes,
                 'segments': segments,
                 'price': price,
-                'currency': flight['price'].get('currency', '')
+                'currency': flight.get('price', {}).get('currency', 'unknown')
             })
 
         if not flight_infos:
