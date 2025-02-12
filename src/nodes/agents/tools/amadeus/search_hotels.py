@@ -63,7 +63,7 @@ def search_hotels(
         shuffled_hotels = hotels_response.data
         random.shuffle(shuffled_hotels)
         for hotel in shuffled_hotels:
-            if len(hotel_offers) >= 5:
+            if len(hotel_offers) >= 3:
                 break
             try:
                 time.sleep(1)
