@@ -1,5 +1,7 @@
 # Executive Summary
 
+Watch my 20 minutes deep dive [here](https://manuelrech.com/projects/multiagent-travel-planner/)!
+
 ![diagram](diagram.png)
 
 This application is a multi-agent system designed to generate comprehensive travel plans by orchestrating several specialized agents. Each agent is responsible for a specific task in the overall workflow, and they interact via a directed graph that guides inputs, enriches them, collects human feedback, and ultimately provides curated travel proposals.
